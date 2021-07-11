@@ -1,5 +1,5 @@
-// const OFF = 'off';
-// const WARN = 'warn';
+const OFF = 'off';
+const WARN = 'warn';
 const ERROR = 'error';
 
 module.exports = {
@@ -45,5 +45,6 @@ module.exports = {
         js: 'never',
       },
     ],
+    '@typescript-eslint/no-var-requires': OFF,
   },
 };
