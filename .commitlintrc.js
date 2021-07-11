@@ -12,7 +12,6 @@
  * test : 增加测试
  * anno: 增加注释
  */
-
 module.exports = {
   extends: ['@commitlint/config-conventional'],
   rules: {
