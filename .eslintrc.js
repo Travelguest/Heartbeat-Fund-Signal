@@ -31,6 +31,7 @@ module.exports = {
       node: {
         extensions: ['.tsx', '.ts', '.js', '.json'],
       },
+      typescript: {},
     },
   },
   plugins: ['react', 'promise', '@typescript-eslint', 'prettier'],
@@ -48,5 +49,9 @@ module.exports = {
     '@typescript-eslint/no-var-requires': OFF,
     'import/no-extraneous-dependencies': [ERROR, { devDependencies: true }],
     'global-require': OFF,
+    'react/jsx-filename-extension': [ERROR, { extensions: ['.tsx', 'ts', '.jsx', 'js'] }],
+    'no-use-before-define': OFF,
+    '@typescript-eslint/no-use-before-define': [ERROR],
+    '@typescript-eslint/explicit-module-boundary-types': OFF,
   },
 };
