@@ -108,6 +108,7 @@ module.exports = {
       template: paths.appHtml,
       cache: false,
     }),
+    // 从打包后的js文件中抽离出 css 样式
     new MiniCssExtractPlugin({
       filename: 'css/[name].[contenthash:8].css',
       chunkFilename: 'css/[name].[contenthash:8].css',
@@ -140,4 +141,8 @@ module.exports = {
       },
     }),
   ],
+  externals: {
+    react: 'React',
+    'react-dom': 'ReactDOM',
+  },
 };
