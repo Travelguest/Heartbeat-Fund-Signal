@@ -7,6 +7,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const common = require('./webpack.common');
 const { PROJECT_PATH } = require('../conf');
 
@@ -31,6 +32,11 @@ module.exports = merge(common, {
       raw: true,
       banner:
         '/** @preserve Powered by Heartbeat-Fund-Signal (https://github.com/Travelguest/Heartbeat-Fund-Signal) */',
+    }),
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'server', // 开一个本地服务查看报告
+      analyzerHost: '127.0.0.1', // host 设置
+      analyzerPort: 8888, // 端口号设置
     }),
   ],
   optimization: {
