@@ -53,5 +53,6 @@ module.exports = {
     'no-use-before-define': OFF,
     '@typescript-eslint/no-use-before-define': [ERROR],
     '@typescript-eslint/explicit-module-boundary-types': OFF,
+    '@typescript-eslint/no-empty-interface': OFF,
   },
 };

@@ -1,0 +1,27 @@
+{
+  "usesTypeScript": true,
+  "usesCssModule": true,
+  "cssPreprocessor": "less",
+  "testLibrary": "none",
+  "component": {
+    "default": {
+      "path": "src/components",
+      " withStyle": true,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false,
+      "withStyle": true
+    },
+    "d3": {
+      "customTemplates": {
+        "component": "templates/d3/TemplateName.tsx",
+        "style": "templates/component/TemplateName.less"
+      },
+      "path": "src/components",
+      "withStyle": true,
+      "withTest": false,
+      "withStory": false,
+      "withLazy": false
+    }
+  }
+}

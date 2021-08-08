@@ -6,4 +6,4 @@ if (module && module.hot) {
   module.hot.accept();
 }
 
-ReactDOM.render(<App name='dy' age={23} />, document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));
