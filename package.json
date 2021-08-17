@@ -110,6 +110,7 @@
   },
   "dependencies": {
     "@babel/runtime-corejs3": "^7.14.8",
+    "antd": "^4.16.12",
     "axios": "^0.21.1",
     "d3": "^7.0.0",
     "postcss": "^8.3.6",
