@@ -5,7 +5,7 @@ $ npx generate-react-cli component D3Demo --type=d3
 */
 
 import React, { useEffect, RefObject } from 'react';
-// import './D3Demo.less';
+// import './index.less';
 import * as d3 from 'd3';
 
 const D3Demo = (props: ID3DemoProps) => {
