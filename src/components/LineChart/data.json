@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Fund Portfolio",
+    "date": "2021-08-24",
+    "value": 6.4,
+    "news": "xxx头条新闻",
+    "icon": "配图icon"
+  },
+  {
+    "name": "HS300",
+    "date": "2021-08-24",
+    "value": 5.7,
+    "news": null,
+    "icon": null
+  },
+  {
+    "name": "Fund Portfolio",
+    "date": "2021-08-25",
+    "value": 6.5,
+    "news": "xxx头条新闻",
+    "icon": "配图icon"
+  },
+  {
+    "name": "HS300",
+    "date": "2021-08-25",
+    "value": 5.4,
+    "news": null,
+    "icon": null
+  }
+]

@@ -1,5 +1,5 @@
 const OFF = 'off';
-const WARN = 'warn';
+// const WARN = 'warn';
 const ERROR = 'error';
 
 module.exports = {
@@ -55,5 +55,9 @@ module.exports = {
     '@typescript-eslint/explicit-module-boundary-types': OFF,
     '@typescript-eslint/no-empty-interface': OFF,
     'react/jsx-props-no-spreading': OFF,
+    'no-shadow': OFF,
+    '@typescript-eslint/no-shadow': [OFF],
+    '@typescript-eslint/no-explicit-any': OFF,
+    'no-console': OFF,
   },
 };
