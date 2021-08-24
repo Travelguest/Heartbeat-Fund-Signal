@@ -54,5 +54,6 @@ module.exports = {
     '@typescript-eslint/no-use-before-define': [ERROR],
     '@typescript-eslint/explicit-module-boundary-types': OFF,
     '@typescript-eslint/no-empty-interface': OFF,
+    'react/jsx-props-no-spreading': OFF,
   },
 };

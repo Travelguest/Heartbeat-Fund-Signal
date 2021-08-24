@@ -109,6 +109,8 @@
     "webpackbar": "^5.0.0-3"
   },
   "dependencies": {
+    "@ant-design/charts": "^1.2.10",
+    "@antv/g2plot": "^2.3.31",
     "@babel/runtime-corejs3": "^7.14.8",
     "antd": "^4.16.12",
     "axios": "^0.21.1",
