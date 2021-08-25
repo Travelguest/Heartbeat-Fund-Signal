@@ -2,7 +2,8 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
-import WordCloudDemo from '../WordCloud';
+import RingChart from '../RingChart';
+import WordCloudComp from '../WordCloud';
 import './index.less';
 
 function Container() {
@@ -18,7 +19,7 @@ function Container() {
       </Row>
       <Row>
         <Col span={10}>
-          <WordCloudDemo />
+          <WordCloudComp />
         </Col>
         <Col span={14}>新闻信息</Col>
       </Row>

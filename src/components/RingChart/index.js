@@ -64,17 +64,20 @@ const RingChart = () => {
           fontSize: 18,
         },
         content: '股票配置',
-        offsetX: -150,
+        offsetX: -180,
         offsetY: -180,
       },
     },
     legend: {
       layout: 'vertical',
       position: 'right',
-      // offsetX: -200,
     },
   };
-  return <Pie {...config} />;
+  return (
+    <div className='ring-chart-container'>
+      <Pie {...config} />
+    </div>
+  );
 };
 
 export default RingChart;

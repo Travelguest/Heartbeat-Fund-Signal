@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { WordCloud } from '@ant-design/charts';
+import './index.less';
 
-const WordCloudDemo = () => {
+const WordCloudComp = () => {
   // const [data, setData] = useState([]);
 
   // const asyncFetch = () => {
@@ -40,7 +41,12 @@ const WordCloudDemo = () => {
     },
     spiral: 'rectangular',
   };
-  return <WordCloud {...config} />;
+  return (
+    <div className='word-cloud-container'>
+      <div className='header'>24小时热门搜索词</div>
+      <WordCloud {...config} />;
+    </div>
+  );
 };
 
-export default WordCloudDemo;
+export default WordCloudComp;
