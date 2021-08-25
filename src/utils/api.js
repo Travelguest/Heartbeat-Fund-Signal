@@ -14,5 +14,6 @@ function axiosFetch(url, data) {
       throw error;
     });
 }
-export const fetchxxxx = (params) => axiosFetch('POST', 'xxxx', params);
-export const fetchxxxxy = (params) => axiosFetch('POST', 'xxxx', params);
+
+export const fetchxxxx = (params) => axiosFetch('xxxx', params);
+export const fetchxxxxy = (params) => axiosFetch('xxxx', params);
