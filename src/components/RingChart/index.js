@@ -71,7 +71,7 @@ const RingChart = () => {
     legend: {
       layout: 'vertical',
       position: 'right',
-      offsetX: -200,
+      // offsetX: -200,
     },
   };
   return <Pie {...config} />;
