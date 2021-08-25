@@ -4,7 +4,7 @@ import Container from './components/Container';
 function App() {
   return (
     <div className='app'>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...哈哈哈</div>}>
         <Container />
       </Suspense>
     </div>

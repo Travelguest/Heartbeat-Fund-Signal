@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Row, Col, DatePicker } from 'antd';
 import moment from 'moment';
 import PorfolioList from './portfolioList';
+import RingChart from '../RingChart';
 import './index.less';
 
 const { RangePicker } = DatePicker;
@@ -40,7 +41,9 @@ const FundInformation = () => {
           </Row>
           <Row>收益相关指标</Row>
         </Col>
-        <Col span={12}>Pie Chart</Col>
+        <Col span={12}>
+          <RingChart />
+        </Col>
       </Row>
     </>
   );
