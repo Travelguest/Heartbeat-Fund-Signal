@@ -59,5 +59,6 @@ module.exports = {
     '@typescript-eslint/no-shadow': [OFF],
     '@typescript-eslint/no-explicit-any': OFF,
     'no-console': OFF,
+    'react/display-name': OFF,
   },
 };
