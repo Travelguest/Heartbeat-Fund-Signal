@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = '/';
+const baseUrl = 'http://10.214.192.22:8088';
 
 function axiosFetch(url, data) {
   return axios({

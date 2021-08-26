@@ -12,8 +12,7 @@ const PorfolioList = () => {
           <div className='holding-fund'>
             <p className='holding-fund-title'>{holdingFund}</p>
             <p className='holding-fund-sub-info'>
-              <span className='item-type'>{type}</span>
-              <span>ID：{id}</span>
+              <span className='item-type'>{id}</span>
             </p>
           </div>
         );

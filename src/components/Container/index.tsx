@@ -9,10 +9,10 @@ function Container() {
   return (
     <div className='container'>
       <Row>
-        <Col span={8}>
+        <Col span={10}>
           <FundInformation />
         </Col>
-        <Col span={16}>
+        <Col span={14}>
           <LineChart />
         </Col>
       </Row>

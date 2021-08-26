@@ -1,9 +1,3 @@
-/*
-Component: src/component/LineChart/LineChart.tsx
-Created with;
-$ npx generate-react-cli component LineChart --type=d3
-*/
-
 import React, { useState, useEffect, RefObject } from 'react';
 import './index.less';
 import { Line } from '@ant-design/charts';
@@ -87,7 +81,11 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     },
     annotations,
   };
-  return <Line {...config} />;
+  return (
+    <div className='line-chart-container'>
+      <Line {...config} />
+    </div>
+  );
 };
 
 /*
