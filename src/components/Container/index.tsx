@@ -2,7 +2,6 @@ import React from 'react';
 import { Row, Col } from 'antd';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
-import RingChart from '../RingChart';
 import WordCloudComp from '../WordCloud';
 import './index.less';
 

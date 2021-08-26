@@ -3,47 +3,40 @@ import { Pie } from '@ant-design/charts';
 import './index.less';
 
 const RingChart = () => {
+  const toPercent = (point) => {
+    let str = Number(point * 100).toFixed(2);
+    str += '%';
+    return str;
+  };
   const data = [
     {
-      type: '分类一',
+      type: '传媒',
       value: 27,
     },
     {
-      type: '分类二',
+      type: '银行',
       value: 25,
     },
     {
-      type: '分类三',
+      type: '现金',
       value: 18,
     },
     {
-      type: '分类四',
+      type: '非银金融',
       value: 15,
     },
-    {
-      type: '分类五',
-      value: 10,
-    },
-    {
-      type: '其他',
-      value: 5,
-    },
-    {
-      type: '其他1',
-      value: 5,
-    },
-    {
-      type: '其他2',
-      value: 5,
-    },
   ];
+  const sum = data.reduce((pre, cur) => {
+    return { value: pre.value + cur.value };
+  });
+
   const config = {
     appendPadding: 20,
     data,
     angleField: 'value',
     colorField: 'type',
     radius: 1,
-    innerRadius: 0.7,
+    innerRadius: 0.5,
     label: {
       type: 'inner',
       offset: '-50%',
@@ -53,7 +46,7 @@ const RingChart = () => {
         fontSize: 14,
       },
     },
-    interactions: [{ type: 'element-selected' }, { type: 'element-active' }],
+    interactions: [{ type: 'element-active' }, { type: 'legend-active' }, { type: 'legend-filter', enable: false }],
     statistic: {
       title: false,
       content: {
@@ -63,18 +56,27 @@ const RingChart = () => {
           textOverflow: 'ellipsis',
           fontSize: 18,
         },
-        content: '股票配置',
-        offsetX: -180,
-        offsetY: -180,
+        content: '',
       },
     },
     legend: {
       layout: 'vertical',
-      position: 'right',
+      position: 'bottom',
+      flipPage: false,
+      itemValue: {
+        style: {
+          fontSize: 12,
+        },
+        space: 50,
+        formatter: (text, item, index) => {
+          return toPercent(data[index].value / sum.value);
+        },
+      },
     },
   };
   return (
     <div className='ring-chart-container'>
+      <div className='title'>股票配置</div>
       <Pie {...config} />
     </div>
   );
