@@ -3,6 +3,7 @@ import { Row, Col } from 'antd';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
+import DetailPosition from '../DetailPosition';
 import './index.less';
 
 function Container() {
@@ -20,7 +21,10 @@ function Container() {
         <Col span={10}>
           <WordCloudComp />
         </Col>
-        <Col span={14}>新闻信息</Col>
+        <Col span={14}>
+          新闻信息
+          <DetailPosition />
+        </Col>
       </Row>
     </div>
   );
