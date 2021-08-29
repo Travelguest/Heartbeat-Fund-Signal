@@ -15,5 +15,13 @@ function axiosFetch(url, data) {
     });
 }
 
-export const fetchxxxx = (params) => axiosFetch('xxxx', params);
-export const fetchxxxxy = (params) => axiosFetch('xxxx', params);
+// 获取基金权重列表
+export const getFundsPortfolio = (params) => axiosFetch('/basic/portfolio', `date=${params}`);
+// 获得本策略评价指标
+export const getEvaluationIndex = (params) => axiosFetch('/basic/metric', `date=${params}`);
+// 获得基金最新一次调仓权重
+export const getLatestRepositioning = (params) => axiosFetch('/basic/portfolio_change', `date=${params}`);
+// 获取基金的成分股
+export const getConstituentStocks = (params) => axiosFetch('/detail/constituent_stocks', params);
+// 矩形树状图数据
+export const getRectangularTreeDiagram = (params) => axiosFetch('/rect_tree', `date=${params}`);

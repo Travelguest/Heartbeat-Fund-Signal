@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col, DatePicker } from 'antd';
 import moment from 'moment';
+import { getLatestRepositioning } from 'Src/utils/api';
 import PorfolioList from './portfolioList';
 import RingChart from '../RingChart';
 import DetailPosition from '../DetailPosition/index';
@@ -23,6 +24,16 @@ const FundInformation = () => {
       setHackTime(undefined);
     }
   };
+  useEffect(() => {
+    getLatestRepositioning('2021-08-25')
+      .then((data) => {
+        console.log('index:', data);
+        return data;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
+  });
 
   return (
     <>
