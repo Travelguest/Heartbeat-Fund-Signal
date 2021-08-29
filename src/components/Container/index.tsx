@@ -23,7 +23,9 @@ function Container() {
           <LineChart />
         </Col>
       </Row>
-      <Col span={5}><RectangularTreeDiagram /></Col>
+      <Col span={5}>
+        <RectangularTreeDiagram />
+      </Col>
     </div>
   );
 }
