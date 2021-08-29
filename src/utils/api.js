@@ -2,13 +2,9 @@ import axios from 'axios';
 
 const baseUrl = 'http://10.214.192.22:8088';
 
-function axiosFetch(url, data) {
-  return axios({
-    url: baseUrl + url,
-    method: 'get',
-    headers: { 'Content-Type': 'application/json' },
-    data,
-  })
+function axiosFetch(url, query) {
+  return axios
+    .get(`${baseUrl}${url}?${query}`)
     .then((res) => res.data)
     .catch((error) => {
       throw error;
@@ -16,7 +12,7 @@ function axiosFetch(url, data) {
 }
 
 // 获取基金权重列表
-export const getFundsPortfolio = (params) => axiosFetch('/basic/portfolio', `date=${params}`);
+export const getFundsPortfolio = (params) => axiosFetch(`/basic/portfolio`, `date=${params}`);
 // 获得本策略评价指标
 export const getEvaluationIndex = (params) => axiosFetch('/basic/metric', `date=${params}`);
 // 获得基金最新一次调仓权重

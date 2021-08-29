@@ -1,7 +1,7 @@
 import React, { useState, useEffect, RefObject } from 'react';
-import styles from './index.less';
-import { Line } from '@ant-design/charts';
 import axios from 'axios';
+import { Line } from '@ant-design/charts';
+import styles from './index.less';
 
 const LineChart = () /* or ( props : ILineChartProps ) */ => {
   const [data, setData] = useState([]);
