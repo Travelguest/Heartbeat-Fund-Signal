@@ -5,11 +5,13 @@ import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
 import DetailPosition from '../DetailPosition';
 import './index.less';
+import RectangularTreeDiagram from '../RectangularTreeDiagram';
 
 function Container() {
   return (
     <div className='container'>
-      <Row>
+      <RectangularTreeDiagram />
+      {/* <Row>
         <Col span={10}>
           <FundInformation />
         </Col>
@@ -25,7 +27,7 @@ function Container() {
           新闻信息
           <DetailPosition />
         </Col>
-      </Row>
+      </Row> */}
     </div>
   );
 }
