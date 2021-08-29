@@ -9,7 +9,8 @@ import RectangularTreeDiagram from '../RectangularTreeDiagram';
 function Container() {
   return (
     <div className={styles.container}>
-      <Row>
+      <RectangularTreeDiagram />
+      {/* <Row>
         <Col span={10}>
           <FundInformation />
         </Col>
@@ -24,8 +25,8 @@ function Container() {
         </Col>
       </Row>
       <Col span={5}>
-        <RectangularTreeDiagram />
-      </Col>
+        
+      </Col> */}
     </div>
   );
 }
