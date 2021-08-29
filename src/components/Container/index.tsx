@@ -9,7 +9,7 @@ import RectangularTreeDiagram from '../RectangularTreeDiagram';
 function Container() {
   return (
     <div className='container'>
-      
+
       <Row>
         <Col span={10}>
           <FundInformation />
@@ -24,7 +24,7 @@ function Container() {
           <LineChart />
         </Col>
       </Row>
-        <Col span={5}><RectangularTreeDiagram /></Col>
+      <Col span={5}><RectangularTreeDiagram /></Col>
     </div>
   );
 }
