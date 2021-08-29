@@ -3,11 +3,12 @@ import { Row, Col } from 'antd';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
-import './index.less';
+import styles from './index.less';
+import RectangularTreeDiagram from '../RectangularTreeDiagram';
 
 function Container() {
   return (
-    <div className='container'>
+    <div className={styles.container}>
       <Row>
         <Col span={10}>
           <FundInformation />
@@ -21,8 +22,8 @@ function Container() {
         <Col span={14}>
           <LineChart />
         </Col>
-        <Col span={5}>拆解树图</Col>
       </Row>
+      <Col span={5}><RectangularTreeDiagram /></Col>
     </div>
   );
 }
