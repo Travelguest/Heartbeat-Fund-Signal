@@ -6,7 +6,7 @@
 
 安装依赖：`npm install`
 
-启动项目：`npm start`
+启动项目：`npm run start`
 
 打包：`npm build`
 
