@@ -3,6 +3,7 @@ import { Row, Col, DatePicker } from 'antd';
 import moment from 'moment';
 import PorfolioList from './portfolioList';
 import RingChart from '../RingChart';
+import DetailPosition from '../DetailPosition/index';
 import './index.less';
 
 const { RangePicker } = DatePicker;
@@ -43,6 +44,7 @@ const FundInformation = () => {
         </Col>
         <Col span={12}>
           <RingChart />
+          <DetailPosition />
         </Col>
       </Row>
     </>

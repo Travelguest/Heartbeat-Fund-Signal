@@ -149,7 +149,7 @@ const DetailPosition = () => {
                 <List.Item.Meta title={item.fund_name} description={`${item.fund_code}`} />
                 <div style={{ marginRight: 90 }}>{item.trade_price}</div>
                 <div style={{ marginRight: 40 }}>
-                  {item.pre_weight} -> {item.weight}
+                  {item.pre_weight} -&gt; {item.weight}
                 </div>
               </List.Item>
             )}
