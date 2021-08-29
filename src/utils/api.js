@@ -26,4 +26,10 @@ export const getConstituentStocks = (params) => axiosFetch('/detail/constituent_
 // 矩形树状图数据
 export const getRectangularTreeDiagram = (params) => axiosFetch('/rect_tree', `date=${params}`);
 // 获取折线图所需全部信息。两个价格信息、新闻信息
-export const getLineChartInfo = (params) => axiosFetch('/rect_t', `date=${params}`);
+export const getLineChartInfo = (params) => axiosFetch('/line', params);
+// 获得当日新闻的taxonomy
+export const getTreeChart = (params) => axiosFetch('/explainable/taxonomy', `date=${params}`);
+// 获得当日调仓逻辑
+export const getOnTheDayTradingLogic = (params) => axiosFetch('/explainable/reason', `date=${params}`);
+// 获得当日的热词
+export const getHotWords = (params) => axiosFetch('/explainable/hot_words', `date=${params}`);
