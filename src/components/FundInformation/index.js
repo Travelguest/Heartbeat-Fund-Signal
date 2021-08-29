@@ -25,7 +25,7 @@ const FundInformation = () => {
     }
   };
   useEffect(() => {
-    getLatestRepositioning('2021-08-25')
+    getLatestRepositioning('2020-01-13')
       .then((data) => {
         console.log('index:', data);
         return data;

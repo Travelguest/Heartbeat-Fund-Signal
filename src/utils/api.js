@@ -25,3 +25,5 @@ export const getLatestRepositioning = (params) => axiosFetch('/basic/portfolio_c
 export const getConstituentStocks = (params) => axiosFetch('/detail/constituent_stocks', params);
 // 矩形树状图数据
 export const getRectangularTreeDiagram = (params) => axiosFetch('/rect_tree', `date=${params}`);
+// 获取折线图所需全部信息。两个价格信息、新闻信息
+export const getLineChartInfo = (params) => axiosFetch('/rect_t', `date=${params}`);
