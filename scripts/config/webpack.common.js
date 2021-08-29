@@ -9,19 +9,22 @@ const { PROJECT_PATH } = require('../constants');
 const { isDevelopment } = require('../env');
 const { imageInlineSizeLimit } = require('../conf');
 
-const getCssLoaders = (importLoaders) => [
+const getCssLoaders = (importLoaders, isGlobalStyle = false) => [
   isDevelopment ? 'style-loader' : MiniCssExtractPlugin.loader,
   {
     loader: 'css-loader',
     options: {
-      modules: {
-        localIdentName: '[local]--[hash:base64:5]',
-      },
+      modules: isGlobalStyle
+        ? false
+        : {
+            localIdentName: '[local]--[hash:base64:5]',
+          },
       sourceMap: isDevelopment,
       importLoaders,
     },
   },
 ];
+
 module.exports = {
   // Webpack 5
   // entry: {
@@ -55,12 +58,36 @@ module.exports = {
       // css less scss
       {
         test: /\.css$/,
+        exclude: /node_modules/,
         use: getCssLoaders(0),
       },
       {
         test: /\.less$/,
+        exclude: /node_modules/,
         use: [
           ...getCssLoaders(1),
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: isDevelopment,
+              lessOptions: {
+                javascriptEnabled: true,
+                modifyVars: {
+                  'primary-color': '#1DA57A',
+                  'link-color': '#1DA57A',
+                  'border-radius-base': '2px',
+                },
+              },
+            },
+          },
+        ],
+      },
+      // 避免antd的样式被css module
+      {
+        test: /\.less$/,
+        include: /node_modules/,
+        use: [
+          ...getCssLoaders(1, true),
           {
             loader: 'less-loader',
             options: {
