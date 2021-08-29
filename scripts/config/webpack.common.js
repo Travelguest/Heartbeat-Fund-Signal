@@ -14,11 +14,13 @@ const getCssLoaders = (importLoaders, isGlobalStyle = false) => [
   {
     loader: 'css-loader',
     options: {
-      modules: isGlobalStyle ? false : {
-        localIdentName: "[local]--[hash:base64:5]",
-      },
+      modules: isGlobalStyle
+        ? false
+        : {
+            localIdentName: '[local]--[hash:base64:5]',
+          },
       sourceMap: isDevelopment,
-      importLoaders
+      importLoaders,
     },
   },
 ];
@@ -80,7 +82,7 @@ module.exports = {
           },
         ],
       },
-      // antd
+      // 避免antd的样式被css module
       {
         test: /\.less$/,
         include: /node_modules/,
