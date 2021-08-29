@@ -4,7 +4,7 @@ import moment from 'moment';
 import PorfolioList from './portfolioList';
 import RingChart from '../RingChart';
 import DetailPosition from '../DetailPosition/index';
-import './index.less';
+import styles from './index.less';
 
 const { RangePicker } = DatePicker;
 
@@ -26,9 +26,9 @@ const FundInformation = () => {
 
   return (
     <>
-      <Row className='fund-container'>
+      <Row className={styles['fund-container']}>
         <Col span={12}>
-          <Row className='time-selection-container'>
+          <Row className={styles['time-selection-container']}>
             选择时间：
             <RangePicker
               value={hackTime || time}

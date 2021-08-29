@@ -3,13 +3,12 @@ import { Row, Col } from 'antd';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
-import './index.less';
+import styles from './index.less';
 import RectangularTreeDiagram from '../RectangularTreeDiagram';
 
 function Container() {
   return (
-    <div className='container'>
-
+    <div className={styles.container}>
       <Row>
         <Col span={10}>
           <FundInformation />

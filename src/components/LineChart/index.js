@@ -1,5 +1,5 @@
 import React, { useState, useEffect, RefObject } from 'react';
-import './index.less';
+import styles from './index.less';
 import { Line } from '@ant-design/charts';
 import axios from 'axios';
 
@@ -82,7 +82,7 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     annotations,
   };
   return (
-    <div className='line-chart-container'>
+    <div className={styles['line-chart-container']}>
       <Line {...config} />
     </div>
   );

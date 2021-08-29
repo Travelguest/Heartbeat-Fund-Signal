@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { List } from 'antd';
 // import { CSSTransition } from 'react-transition-group';
-import './index.less';
+import styles from './index.less';
 
 const DetailPosition = () => {
   const [isDetail, setDetail] = useState(true);
@@ -106,12 +106,12 @@ const DetailPosition = () => {
   ];
 
   return (
-    <div className='list-container'>
-      <div className='header'>
+    <div className={styles['list-container']}>
+      <div className={styles['header']}>
         <span style={{ marginRight: 220 }}>详细持仓</span>
         <a onClick={() => setDetail(!isDetail)}>查看最新持仓</a>
       </div>
-      <div className='list'>
+      <div className={styles['list']}>
         {isDetail ? (
           <List
             itemLayout='horizontal'
@@ -120,7 +120,7 @@ const DetailPosition = () => {
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta
-                  title={<div className='list-title'>{item.sector}</div>}
+                  title={<div className={styles['list-title']}>{item.sector}</div>}
                   description={
                     <List
                       itemLayout='horizontal'
