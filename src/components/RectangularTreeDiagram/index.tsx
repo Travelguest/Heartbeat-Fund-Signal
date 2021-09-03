@@ -36,11 +36,11 @@ const RectangularTreeDiagram: React.FC<IRectangularTreeDiagramProps> = (props) =
   };
 
   useEffect(() => {
-    // render();
+    render();
   }, []);
 
   return (
-    <div className={styles.container}></div>
+    <div id={styles.container}></div>
   );
 };
 
