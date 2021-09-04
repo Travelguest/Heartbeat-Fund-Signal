@@ -1,15 +1,33 @@
 import React, { useState, useEffect, RefObject } from 'react';
+import moment from 'moment';
 import axios from 'axios';
+import { DatePicker } from 'antd';
 import { Line } from '@ant-design/charts';
 import styles from './index.less';
 
+const { RangePicker } = DatePicker;
 const LineChart = () /* or ( props : ILineChartProps ) */ => {
   const [data, setData] = useState([]);
+  const [hackTime, setHackTime] = useState();
+  const [time, setTime] = useState();
+
+  const disabledDate = (current) => {
+    return current && current > moment().locale('zh-cn');
+  };
+
+  const onOpenChange = (open) => {
+    if (open) {
+      setHackTime([]);
+    } else {
+      setHackTime(undefined);
+    }
+  };
+
   const asyncGet = () => {
     axios
       .get('https://gw.alipayobjects.com/os/bmw-prod/e00d52f4-2fa6-47ee-a0d7-105dd95bde20.json')
       .then(({ data }) => {
-        console.log(data);
+        // console.log(data);
         return setData(data);
       })
       .catch((error) => {
@@ -83,7 +101,18 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
   };
   return (
     <div className={styles['line-chart-container']}>
-      <Line {...config} />
+      <div className={styles['time-selection-container']}>
+        选择时间：
+        <RangePicker
+          value={hackTime || time}
+          disabledDate={disabledDate}
+          onChange={(val) => setTime(val)}
+          onOpenChange={onOpenChange}
+        />
+      </div>
+      <div className={styles['line-chart']}>
+        <Line {...config} />
+      </div>
     </div>
   );
 };

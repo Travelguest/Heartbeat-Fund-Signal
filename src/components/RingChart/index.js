@@ -1,34 +1,21 @@
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { Pie } from '@ant-design/charts';
 import './index.less';
 
-const RingChart = () => {
+const RingChart = (props) => {
   const toPercent = (point) => {
-    let str = Number(point * 100).toFixed(2);
+    let str = Number(point * 100);
     str += '%';
     return str;
   };
-  const data = [
-    {
-      type: '传媒',
-      value: 27,
-    },
-    {
-      type: '银行',
-      value: 25,
-    },
-    {
-      type: '现金',
-      value: 18,
-    },
-    {
-      type: '非银金融',
-      value: 15,
-    },
-  ];
-  const sum = data.reduce((pre, cur) => {
-    return { value: pre.value + cur.value };
-  });
+  const { data } = props;
+  // const sum = data.reduce(
+  //   (pre, cur) => {
+  //     return { value: pre.value + cur.value };
+  //   },
+  //   { value: 0 },
+  // );
 
   const config = {
     appendPadding: 20,
@@ -68,12 +55,13 @@ const RingChart = () => {
           fontSize: 12,
         },
         space: 50,
-        formatter: (text, item, index) => {
-          return toPercent(data[index].value / sum.value);
+        formatter: () => {
+          return '';
         },
       },
     },
   };
+
   return (
     <div className='ring-chart-container'>
       <div className='title'>股票配置</div>
