@@ -9,5 +9,5 @@ export interface IPortfolioItem {
 }
 
 export interface IPorfolioListProps {
-  fundsPortfolio: IPortfolioItem[];
+  data: IPortfolioItem[];
 }

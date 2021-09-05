@@ -60,5 +60,8 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': OFF,
     'no-console': OFF,
     'react/display-name': OFF,
+    'jsx-a11y/click-events-have-key-events': OFF,
+    'jsx-a11y/no-static-element-interactions': OFF,
+    'react/prop-types': OFF,
   },
 };

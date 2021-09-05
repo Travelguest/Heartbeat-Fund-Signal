@@ -1,12 +1,16 @@
 import React, { useEffect } from 'react';
 import { Treemap } from '@antv/g2plot';
+import { getRectangularTreeDiagram } from 'Utils/api';
 import styles from './index.less';
 // eslint-disable-next-line import/extensions
 import data from './data.json';
 
-export interface IRectangularTreeDiagramProps {}
+export interface IRectangularTreeDiagramProps {
+  time: string;
+}
 
-const RectangularTreeDiagram: React.FC<IRectangularTreeDiagramProps> = () => {
+const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
+  const { time } = props;
   const render = () => {
     const treemapPlot = new Treemap(styles.container, {
       data,
@@ -34,10 +38,19 @@ const RectangularTreeDiagram: React.FC<IRectangularTreeDiagramProps> = () => {
 
     treemapPlot.render();
   };
-
   useEffect(() => {
+    getRectangularTreeDiagram(time)
+      .then((res) => {
+        console.log('res;', res);
+        // 嵌套矩形树图中，布局由叶子节点的 value 值决定。
+        // 故需要给每个children乘上父结点的value作为权重配比
+        return res;
+      })
+      .catch((err) => {
+        console.error(err);
+      });
     render();
-  }, []);
+  }, [time]);
 
   return <div id={styles.container} />;
 };

@@ -1,16 +1,18 @@
 import React, { useState } from 'react';
 import { Row, Col, DatePicker } from 'antd';
-import moment from 'moment';
+import moment, { Moment } from 'moment';
 import LineChart from '../LineChart/index';
 import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
 import styles from './index.less';
 import RectangularTreeDiagram from '../RectangularTreeDiagram';
 
+type DateType = Moment | null;
+
 const Container: React.FC = () => {
   const [time, setTime] = useState<string>('2020-01-13');
-  function onChange(date: any, dateString: string) {
-    console.log(dateString);
+  function onChange(date: DateType, dateString: string) {
+    console.log(date, dateString);
     setTime(dateString);
   }
   return (
@@ -21,12 +23,12 @@ const Container: React.FC = () => {
           <FundInformation time={time} />
         </Col>
         <Col span={14}>
-          <RectangularTreeDiagram />
+          <RectangularTreeDiagram time={time} />
         </Col>
       </Row>
       <Row>
         <Col span={5}>
-          <WordCloudComp />
+          <WordCloudComp time={time} />
         </Col>
         <Col span={14}>
           <LineChart />

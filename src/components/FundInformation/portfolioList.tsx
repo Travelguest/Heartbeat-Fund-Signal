@@ -5,14 +5,14 @@ import { IPorfolioListProps } from 'Src/typings/porfolio';
 import styles from './portfolioList.less';
 
 const PorfolioList = (props: IPorfolioListProps) => {
-  const { fundsPortfolio } = props;
-  fundsPortfolio.forEach((fund) => {
+  const { data } = props;
+  data.forEach((fund) => {
     // eslint-disable-next-line no-param-reassign
     fund.proportionOfOpenPositions = `${fund.value * 100}%`;
   });
 
   useEffect(() => {
-    console.log('fundsPortfolio:', fundsPortfolio);
+    console.log('fundsPortfolio:', data);
   });
   const columns = [
     {
@@ -44,7 +44,7 @@ const PorfolioList = (props: IPorfolioListProps) => {
     <Table
       rowKey={(record) => record.fund_code}
       columns={columns}
-      dataSource={fundsPortfolio}
+      dataSource={data}
       scroll={{ y: 400 }}
       pagination={{ hideOnSinglePage: false }}
     />

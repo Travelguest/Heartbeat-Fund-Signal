@@ -3,8 +3,15 @@ import { List } from 'antd';
 // import { CSSTransition } from 'react-transition-group';
 import styles from './index.less';
 
-const DetailPosition = () => {
+const DetailPosition = (props) => {
+  const { latestRepositioning } = props;
   const [isDetail, setDetail] = useState(true);
+  const toPercent = (point) => {
+    let str = Number(point * 100);
+    str += '%';
+    return str;
+  };
+
   const data = [
     {
       sector: '非银金融',
@@ -92,26 +99,13 @@ const DetailPosition = () => {
     },
   ];
 
-  const data1 = [
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-    { fund_name: '中信证券', fund_code: 165215, trade_price: 65.11, pre_weight: '0%', weight: '50%' },
-  ];
-
   return (
     <div className={styles['list-container']}>
-      <div className={styles['header']}>
+      <div className={styles.header}>
         <span style={{ marginRight: 220 }}>详细持仓</span>
-        <a onClick={() => setDetail(!isDetail)}>查看最新持仓</a>
+        <span onClick={() => setDetail(!isDetail)}>查看最新持仓</span>
       </div>
-      <div className={styles['list']}>
+      <div className={styles.list}>
         {isDetail ? (
           <List
             itemLayout='horizontal'
@@ -143,13 +137,15 @@ const DetailPosition = () => {
         ) : (
           <List
             itemLayout='horizontal'
-            dataSource={data1}
+            dataSource={latestRepositioning}
             renderItem={(item) => (
               <List.Item>
                 <List.Item.Meta title={item.fund_name} description={`${item.fund_code}`} />
-                <div style={{ marginRight: 90 }}>{item.trade_price}</div>
+                <div style={{ marginRight: 90 }}>
+                  {item.trade_price === '-' ? '-' : Number(item.trade_price).toFixed(4)}
+                </div>
                 <div style={{ marginRight: 40 }}>
-                  {item.pre_weight} -&gt; {item.weight}
+                  {toPercent(item.pre_weight)} -&gt; {toPercent(item.weight)}
                 </div>
               </List.Item>
             )}
