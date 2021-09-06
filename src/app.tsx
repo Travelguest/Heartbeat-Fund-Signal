@@ -1,10 +1,11 @@
 import React, { Suspense } from 'react';
 import Container from './components/Container';
+import styles from './app.less';
 
 function App() {
   return (
-    <div className='app'>
-      <Suspense fallback={<div>Loading...哈哈哈</div>}>
+    <div id={styles.root}>
+      <Suspense fallback={<div>Loading...</div>}>
         <Container />
       </Suspense>
     </div>

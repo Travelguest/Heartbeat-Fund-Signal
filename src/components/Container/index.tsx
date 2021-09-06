@@ -6,13 +6,13 @@ import FundInformation from '../FundInformation/index';
 import WordCloudComp from '../WordCloud';
 import styles from './index.less';
 import RectangularTreeDiagram from '../RectangularTreeDiagram';
+import DisassemblyTree from '../DisassemblyTree';
 
 type DateType = Moment | null;
 
 const Container: React.FC = () => {
   const [time, setTime] = useState<string>('2020-01-13');
   function onChange(date: DateType, dateString: string) {
-    console.log(date, dateString);
     setTime(dateString);
   }
   return (
@@ -30,10 +30,12 @@ const Container: React.FC = () => {
         <Col span={5}>
           <WordCloudComp time={time} />
         </Col>
-        <Col span={14}>
+        <Col span={10}>
           <LineChart />
         </Col>
-        <Col span={5}>树图</Col>
+        <Col span={9}>
+          <DisassemblyTree time={time} />
+        </Col>
       </Row>
     </div>
   );

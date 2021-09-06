@@ -63,5 +63,6 @@ module.exports = {
     'jsx-a11y/click-events-have-key-events': OFF,
     'jsx-a11y/no-static-element-interactions': OFF,
     'react/prop-types': OFF,
+    'no-param-reassign': OFF,
   },
 };

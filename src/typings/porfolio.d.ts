@@ -10,4 +10,5 @@ export interface IPortfolioItem {
 
 export interface IPorfolioListProps {
   data: IPortfolioItem[];
+  setfundID: function;
 }

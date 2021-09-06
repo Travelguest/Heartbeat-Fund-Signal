@@ -18,11 +18,12 @@ export const getEvaluationIndex = (params) => axiosFetch('/basic/metric', `date=
 // 获得基金最新一次调仓权重
 export const getLatestRepositioning = (params) => axiosFetch('/basic/portfolio_change', `date=${params}`);
 // 获取基金的成分股
-export const getConstituentStocks = (params) => axiosFetch('/detail/constituent_stocks', params);
+export const getConstituentStocks = (params) =>
+  axiosFetch('/detail/constituent_stocks', `date=${params[0]}&fund_id=${params[1]}`);
 // 矩形树状图数据
 export const getRectangularTreeDiagram = (params) => axiosFetch('/rect_tree', `date=${params}`);
 // 获取折线图所需全部信息。两个价格信息、新闻信息
-export const getLineChartInfo = (params) => axiosFetch('/line', params);
+export const getLineChartInfo = (params) => axiosFetch('/line', `start_date=${params[0]}&end_date=${params[1]}`);
 // 获得当日新闻的taxonomy
 export const getTreeChart = (params) => axiosFetch('/explainable/taxonomy', `date=${params}`);
 // 获得当日调仓逻辑

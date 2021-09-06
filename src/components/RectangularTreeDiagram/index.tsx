@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Treemap } from '@antv/g2plot';
 import { getRectangularTreeDiagram } from 'Utils/api';
 import styles from './index.less';
 // eslint-disable-next-line import/extensions
-import data from './data.json';
+// import data from './data.json';
 
 export interface IRectangularTreeDiagramProps {
   time: string;
@@ -11,6 +11,7 @@ export interface IRectangularTreeDiagramProps {
 
 const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
   const { time } = props;
+  const [data, setData] = useState({});
   const render = () => {
     const treemapPlot = new Treemap(styles.container, {
       data,
@@ -40,17 +41,25 @@ const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
   };
   useEffect(() => {
     getRectangularTreeDiagram(time)
-      .then((res) => {
-        console.log('res;', res);
+      .then(({ content }) => {
+        console.log('RectangularTree;', content);
         // 嵌套矩形树图中，布局由叶子节点的 value 值决定。
         // 故需要给每个children乘上父结点的value作为权重配比
-        return res;
+        content.children.forEach((item: any) => {
+          if (Array.isArray(item.children) && item.children.length > 0) {
+            item.children.forEach((child: any, index: number, arr: any[]) => {
+              arr[index].value *= item.value; // 每个children乘上父结点的value作为权重配比
+            });
+          }
+        });
+        setData(content);
+        return content;
       })
       .catch((err) => {
         console.error(err);
       });
     render();
-  }, [time]);
+  });
 
   return <div id={styles.container} />;
 };

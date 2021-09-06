@@ -5,15 +5,18 @@ import { IPorfolioListProps } from 'Src/typings/porfolio';
 import styles from './portfolioList.less';
 
 const PorfolioList = (props: IPorfolioListProps) => {
-  const { data } = props;
+  const { data, setfundID } = props;
   data.forEach((fund) => {
     // eslint-disable-next-line no-param-reassign
     fund.proportionOfOpenPositions = `${fund.value * 100}%`;
   });
 
   useEffect(() => {
-    console.log('fundsPortfolio:', data);
+    // console.log('fundsPortfolio:', data);
   });
+  const handleClickFund = (event: { target: any }) => {
+    setfundID(event.target.innerHTML);
+  };
   const columns = [
     {
       title: '持仓基金',
@@ -24,7 +27,7 @@ const PorfolioList = (props: IPorfolioListProps) => {
             <p className={styles['holding-fund-title']}>{type}</p>
             <p className={styles['holding-fund-sub-info']}>
               <span className={styles['item-type']}>{fund_type}</span>
-              <span>{fund_code}</span>
+              <span onClick={handleClickFund}>{fund_code}</span>
             </p>
           </div>
         );

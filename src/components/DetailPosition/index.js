@@ -4,7 +4,7 @@ import { List } from 'antd';
 import styles from './index.less';
 
 const DetailPosition = (props) => {
-  const { latestRepositioning } = props;
+  const { detailRepositioning, latestRepositioning } = props;
   const [isDetail, setDetail] = useState(true);
   const toPercent = (point) => {
     let str = Number(point * 100);
@@ -12,104 +12,111 @@ const DetailPosition = (props) => {
     return str;
   };
 
-  const data = [
-    {
-      sector: '非银金融',
-      stock: [
-        {
-          stock_code: 165215,
-          stock_name: '华泰证券',
-          stock_price: 65.11,
-          pct_chg: '5.88%',
-          mkv: 5131561,
-          stk_mkv_ratio: '40%',
-        },
-        {
-          stock_code: 165215,
-          stock_name: '中信证券',
-          stock_price: 65.11,
-          pct_chg: '5.77%',
-          mkv: 5131561,
-          stk_mkv_ratio: '50%',
-        },
-      ],
-    },
-    {
-      sector: '银行',
-      stock: [
-        {
-          stock_code: 165215,
-          stock_name: '华泰证券',
-          stock_price: 65.11,
-          pct_chg: '5.55%',
-          mkv: 5131561,
-          stk_mkv_ratio: '40%',
-        },
-        {
-          stock_code: 165215,
-          stock_name: '中信证券',
-          stock_price: 65.11,
-          pct_chg: '5.11%',
-          mkv: 5131561,
-          stk_mkv_ratio: '50%',
-        },
-      ],
-    },
-    {
-      sector: '传媒',
-      stock: [
-        {
-          stock_code: 165215,
-          stock_name: '华泰证券',
-          stock_price: 65.11,
-          pct_chg: '5%',
-          mkv: 5131561,
-          stk_mkv_ratio: '40%',
-        },
-        {
-          stock_code: 165215,
-          stock_name: '中信证券',
-          stock_price: 65.11,
-          pct_chg: '5.77%',
-          mkv: 5131561,
-          stk_mkv_ratio: '50%',
-        },
-      ],
-    },
-    {
-      sector: '计算机',
-      stock: [
-        {
-          stock_code: 165215,
-          stock_name: '华泰证券',
-          stock_price: 65.11,
-          pct_chg: '5.05%',
-          mkv: 5131561,
-          stk_mkv_ratio: '40%',
-        },
-        {
-          stock_code: 165215,
-          stock_name: '中信证券',
-          stock_price: 65.11,
-          pct_chg: '5.11%',
-          mkv: 5131561,
-          stk_mkv_ratio: '50%',
-        },
-      ],
-    },
-  ];
+  // const data = [
+  //   {
+  //     sector: '非银金融',
+  //     stock: [
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '华泰证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.88%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '40%',
+  //       },
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '中信证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.77%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '50%',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     sector: '银行',
+  //     stock: [
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '华泰证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.55%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '40%',
+  //       },
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '中信证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.11%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '50%',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     sector: '传媒',
+  //     stock: [
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '华泰证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '40%',
+  //       },
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '中信证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.77%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '50%',
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     sector: '计算机',
+  //     stock: [
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '华泰证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.05%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '40%',
+  //       },
+  //       {
+  //         stock_code: 165215,
+  //         stock_name: '中信证券',
+  //         stock_price: 65.11,
+  //         pct_chg: '5.11%',
+  //         mkv: 5131561,
+  //         stk_mkv_ratio: '50%',
+  //       },
+  //     ],
+  //   },
+  // ];
 
   return (
     <div className={styles['list-container']}>
       <div className={styles.header}>
-        <span style={{ marginRight: 220 }}>详细持仓</span>
-        <span onClick={() => setDetail(!isDetail)}>查看最新持仓</span>
+        <span style={{ marginRight: 260 }}>详细持仓</span>
+        <span
+          style={{
+            color: '#0266b8',
+          }}
+          onClick={() => setDetail(!isDetail)}
+        >
+          查看最新持仓
+        </span>
       </div>
       <div className={styles.list}>
         {isDetail ? (
           <List
             itemLayout='horizontal'
-            dataSource={data}
+            dataSource={detailRepositioning}
             split={false}
             renderItem={(item) => (
               <List.Item>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { WordCloud } from '@ant-design/charts';
 import { getHotWords } from 'Utils/api';
-import './index.less';
+import styles from './index.less';
 
 const WordCloudComp = (props) => {
   const { time } = props;
@@ -10,7 +10,7 @@ const WordCloudComp = (props) => {
   useEffect(() => {
     getHotWords(time)
       .then(({ content }) => {
-        console.log('word', content);
+        // console.log('word', content);
         setData(content);
         return content;
       })
@@ -32,8 +32,8 @@ const WordCloudComp = (props) => {
     spiral: 'rectangular',
   };
   return (
-    <div className='word-cloud-container'>
-      <div className='header'>24小时热门搜索词</div>
+    <div className={styles['word-cloud-container']}>
+      <div className={styles.header}>24小时热门搜索词</div>
       <WordCloud {...config} />;
     </div>
   );

@@ -1,0 +1,38 @@
+{
+  "content": {
+    "children": [
+      {
+        "children": [
+          {
+            "children": [
+              { "children": [], "id": "A100", "value": { "color_label": 12, "items": [{}], "title": "新材" } },
+              { "children": [], "id": "A101", "value": { "color_label": 13, "items": [{}], "title": "合伙人" } }
+            ],
+            "id": "A10",
+            "value": { "color_label": 13, "items": [{}], "title": "邮轮" }
+          },
+          {
+            "children": [
+              { "children": [], "id": "A110", "value": { "color_label": 14, "items": [{}], "title": "生物医药" } },
+              {
+                "children": [
+                  { "children": [], "id": "A1110", "value": { "color_label": 15, "items": [{}], "title": "铁" } },
+                  { "children": [], "id": "A1111", "value": { "color_label": 16, "items": [{}], "title": "玻璃" } }
+                ],
+                "id": "A111",
+                "value": { "color_label": 16, "items": [{}], "title": "玻璃" }
+              }
+            ],
+            "id": "A11",
+            "value": { "color_label": 16, "items": [{}], "title": "生物医药" }
+          }
+        ],
+        "id": "A1",
+        "value": { "color_label": 20, "items": [{}], "title": "邮轮" }
+      }
+    ],
+    "id": "A0",
+    "value": { "color_label": 20, "items": [{}], "title": "今日概念" }
+  },
+  "msg": "ok"
+}
