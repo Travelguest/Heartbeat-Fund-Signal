@@ -11,93 +11,93 @@ const DetailPosition = (props) => {
     str += '%';
     return str;
   };
-
-  // const data = [
-  //   {
-  //     sector: '非银金融',
-  //     stock: [
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '华泰证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.88%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '40%',
-  //       },
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '中信证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.77%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '50%',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     sector: '银行',
-  //     stock: [
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '华泰证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.55%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '40%',
-  //       },
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '中信证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.11%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '50%',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     sector: '传媒',
-  //     stock: [
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '华泰证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '40%',
-  //       },
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '中信证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.77%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '50%',
-  //       },
-  //     ],
-  //   },
-  //   {
-  //     sector: '计算机',
-  //     stock: [
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '华泰证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.05%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '40%',
-  //       },
-  //       {
-  //         stock_code: 165215,
-  //         stock_name: '中信证券',
-  //         stock_price: 65.11,
-  //         pct_chg: '5.11%',
-  //         mkv: 5131561,
-  //         stk_mkv_ratio: '50%',
-  //       },
-  //     ],
-  //   },
-  // ];
+  // 注意：等非哥将最新调仓接口改好后，将data注释并改为detailRepositioning
+  const data = [
+    {
+      sector: '非银金融',
+      stock: [
+        {
+          stock_code: 165215,
+          stock_name: '华泰证券',
+          stock_price: 65.11,
+          pct_chg: '5.88%',
+          mkv: 5131561,
+          stk_mkv_ratio: '40%',
+        },
+        {
+          stock_code: 165215,
+          stock_name: '中信证券',
+          stock_price: 65.11,
+          pct_chg: '5.77%',
+          mkv: 5131561,
+          stk_mkv_ratio: '50%',
+        },
+      ],
+    },
+    {
+      sector: '银行',
+      stock: [
+        {
+          stock_code: 165215,
+          stock_name: '华泰证券',
+          stock_price: 65.11,
+          pct_chg: '5.55%',
+          mkv: 5131561,
+          stk_mkv_ratio: '40%',
+        },
+        {
+          stock_code: 165215,
+          stock_name: '中信证券',
+          stock_price: 65.11,
+          pct_chg: '5.11%',
+          mkv: 5131561,
+          stk_mkv_ratio: '50%',
+        },
+      ],
+    },
+    {
+      sector: '传媒',
+      stock: [
+        {
+          stock_code: 165215,
+          stock_name: '华泰证券',
+          stock_price: 65.11,
+          pct_chg: '5%',
+          mkv: 5131561,
+          stk_mkv_ratio: '40%',
+        },
+        {
+          stock_code: 165215,
+          stock_name: '中信证券',
+          stock_price: 65.11,
+          pct_chg: '5.77%',
+          mkv: 5131561,
+          stk_mkv_ratio: '50%',
+        },
+      ],
+    },
+    {
+      sector: '计算机',
+      stock: [
+        {
+          stock_code: 165215,
+          stock_name: '华泰证券',
+          stock_price: 65.11,
+          pct_chg: '5.05%',
+          mkv: 5131561,
+          stk_mkv_ratio: '40%',
+        },
+        {
+          stock_code: 165215,
+          stock_name: '中信证券',
+          stock_price: 65.11,
+          pct_chg: '5.11%',
+          mkv: 5131561,
+          stk_mkv_ratio: '50%',
+        },
+      ],
+    },
+  ];
 
   return (
     <div className={styles['list-container']}>
@@ -116,7 +116,7 @@ const DetailPosition = (props) => {
         {isDetail ? (
           <List
             itemLayout='horizontal'
-            dataSource={detailRepositioning}
+            dataSource={data}
             split={false}
             renderItem={(item) => (
               <List.Item>

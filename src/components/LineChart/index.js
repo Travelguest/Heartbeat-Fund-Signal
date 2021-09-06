@@ -61,38 +61,35 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     //   },
     // },
   ];
-  const asyncGet = () => {
+  useEffect(() => {
     getLineChartInfo(paramsTime)
       .then(({ content }) => {
         console.log('LineChart:', content);
         // 处理数据中的新闻
-        content.forEach((item) => {
-          if (item.content) {
-            annotations.push({
-              type: 'dataMarker',
-              position: [item.date, item.value],
-              text: {
-                content: '2月份因逢春节水产销售需求旺盛\uFF0C\n需求大增',
-                style: { textAlign: 'left' },
-              },
-              point: {
-                style: {
-                  fill: '#f5222d',
-                  stroke: '#f5222d',
-                },
-              },
-            });
-          }
-        });
+        // content.forEach((item) => {
+        //   if (item.content) {
+        //     annotations.push({
+        //       type: 'dataMarker',
+        //       position: [item.date, item.value],
+        //       text: {
+        //         content: '2月份因逢春节水产销售需求旺盛\uFF0C\n需求大增',
+        //         style: { textAlign: 'left' },
+        //       },
+        //       point: {
+        //         style: {
+        //           fill: '#f5222d',
+        //           stroke: '#f5222d',
+        //         },
+        //       },
+        //     });
+        //   }
+        // });
         return setData(content);
       })
       .catch((error) => {
         console.error(error);
       });
-  };
-  useEffect(() => {
-    asyncGet();
-  });
+  }, [paramsTime]);
 
   const config = {
     data,

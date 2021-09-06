@@ -17,7 +17,7 @@ const FundInformation: React.FC<IFundInformationProps> = (props: IFundInformatio
   const [latestRepositioning, setLatestRepositioning] = useState([]);
   const [detailRepositioning, setDetailRepositioning] = useState([]);
   const [incomeIndex, setIncomeIndex] = useState({});
-  const [fundID, setfundID] = useState('159941.SZ');
+  const [fundID, setfundID] = useState('162703.SZ');
   useEffect(() => {
     getFundsPortfolio(time)
       .then(({ content }) => {
@@ -46,7 +46,7 @@ const FundInformation: React.FC<IFundInformationProps> = (props: IFundInformatio
   useEffect(() => {
     getConstituentStocks([time, fundID])
       .then(({ content }) => {
-        console.log('详细', content);
+        console.log('详细调仓', content);
         setDetailRepositioning(content);
         return content;
       })
