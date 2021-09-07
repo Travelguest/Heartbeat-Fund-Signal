@@ -1,5 +1,5 @@
 const OFF = 'off';
-// const WARN = 'warn';
+const WARN = 'warn';
 const ERROR = 'error';
 
 module.exports = {
@@ -64,5 +64,6 @@ module.exports = {
     'jsx-a11y/no-static-element-interactions': OFF,
     'react/prop-types': OFF,
     'no-param-reassign': OFF,
+    'react-hooks/exhaustive-deps': WARN,
   },
 };
