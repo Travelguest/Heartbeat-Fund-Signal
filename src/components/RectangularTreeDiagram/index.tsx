@@ -2,8 +2,6 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Treemap } from '@antv/g2plot';
 import { getRectangularTreeDiagram } from 'Utils/api';
 import styles from './index.less';
-// eslint-disable-next-line import/extensions
-// import data from './newData.json';
 
 export interface IRectangularTreeDiagramProps {
   time: string;
@@ -21,6 +19,7 @@ const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
       legend: {
         position: 'top-left',
       },
+      interactions: [{ type: 'treemap-drill-down' }],
       drilldown: {
         enabled: true,
         breadCrumb: {
