@@ -7,7 +7,7 @@ const DetailPosition = (props) => {
   const { detailRepositioning, latestRepositioning } = props;
   const [isDetail, setDetail] = useState(true);
   const toPercent = (point) => {
-    let str = Number(point * 100);
+    let str = Number(point * 100).toFixed(2);
     str += '%';
     return str;
   };

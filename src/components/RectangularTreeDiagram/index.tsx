@@ -12,7 +12,6 @@ const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
   const [data, setData] = useState({});
   const treemapRef = useRef<Treemap>();
   const render = () => {
-    console.log('康康：', styles.container);
     const treemapPlot = new Treemap(styles.container, {
       data,
       colorField: 'name',
@@ -44,7 +43,7 @@ const RectangularTreeDiagram = (props: IRectangularTreeDiagramProps) => {
   useEffect(() => {
     getRectangularTreeDiagram(time)
       .then(({ content }) => {
-        console.log('RectangularTree;', content);
+        // console.log('RectangularTree;', content);
         // 嵌套矩形树图中，布局由叶子节点的 value 值决定。
         // 故需要给每个children乘上父结点的value作为权重配比
         // content.children.forEach((item: any) => {

@@ -32,45 +32,16 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     setTime(date);
   };
   // 可以用数组来生成多个点
-  const annotations = [
-    {
-      type: 'dataMarker',
-      position: ['2020-01-10', 1.00112],
-      text: {
-        content: 'yuncaijing:高盛：建议2020年买入人民币',
-        style: { textAlign: 'left' },
-      },
-      point: {
-        style: {
-          fill: '#f5222d',
-          stroke: '#f5222d',
-        },
-      },
-    },
-    // {
-    //   type: 'dataMarker',
-    //   top: true,
-    //   position: ['2008', 14448933025000],
-    //   text: {
-    //     content: '需求大增',
-    //     style: { textAlign: 'left' },
-    //   },
-    //   point: {
-    //     style: {
-    //       fill: '#f5222d',
-    //       stroke: '#f5222d',
-    //     },
-    //   },
-    // },
-  ];
+  const [annotations, setAnnotations] = useState([]);
   useEffect(() => {
     getLineChartInfo(paramsTime)
       .then(({ content }) => {
-        console.log('LineChart:', content);
+        // console.log('LineChart:', content);
         // 处理数据中的新闻
+        const newAnnotations = annotations.slice();
         content.forEach((item) => {
           if (item.news) {
-            annotations.push({
+            newAnnotations.push({
               type: 'dataMarker',
               position: [item.date, item.value],
               top: true,
@@ -87,58 +58,23 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
             });
           }
         });
-        console.log('annotations:', annotations);
+        // console.log('annotations:', annotations);
+        setAnnotations(newAnnotations);
         return setData(content);
       })
       .catch((error) => {
         console.error(error);
       });
   }, [paramsTime]);
-
-  const render = () => {
-    console.log('开始', styles['line-chart']);
-    const line = new Line(styles['line-chart'], {
-      data,
-      padding: 'auto',
-      xField: 'date',
-      yField: 'value',
-      seriesField: 'name',
-      xAxis: { tickCount: 10 },
-      yAxis: {
-        label: {
-          formatter: (v) => `${Number(v).toFixed(2)}`,
-        },
-      },
-      legend: {
-        position: 'top',
-      },
-      slider: {
-        start: 0.1,
-        end: 0.9,
-      },
-      annotations,
-    });
-    lineRef.current = line;
-    line.render();
-  };
-
-  useEffect(() => {
-    render();
-  }, []);
-
-  useEffect(() => {
-    lineRef.current.update(annotations);
-    lineRef.current.changeData(data);
-  }, [data, annotations]);
-  const config = {
+  const options = {
     data,
+    padding: 'auto',
     xField: 'date',
     yField: 'value',
     seriesField: 'name',
     xAxis: { tickCount: 10 },
     yAxis: {
       label: {
-        // formatter: (v) => `${(v / 10e8).toFixed(1)} B`,
         formatter: (v) => `${Number(v).toFixed(2)}`,
       },
     },
@@ -151,6 +87,20 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     },
     annotations,
   };
+  const render = () => {
+    const line = new Line(styles['line-chart'], options);
+    lineRef.current = line;
+    line.render();
+  };
+
+  useEffect(() => {
+    render();
+  }, []);
+
+  useEffect(() => {
+    lineRef.current.update({ ...options, annotations });
+    lineRef.current.changeData(data);
+  }, [data, annotations]);
   return (
     <div className={styles['line-chart-container']}>
       <div className={styles['time-selection-container']}>
