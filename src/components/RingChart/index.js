@@ -27,7 +27,9 @@ const RingChart = (props) => {
     label: {
       type: 'inner',
       offset: '-50%',
-      content: '{value}',
+      content: (obj) => {
+        return obj.percent > 0.1 ? obj.value : '';
+      },
       style: {
         textAlign: 'center',
         fontSize: 14,

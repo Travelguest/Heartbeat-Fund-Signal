@@ -5,6 +5,7 @@ import { DatePicker } from 'antd';
 // import { Line } from '@ant-design/charts';
 import { Line } from '@antv/g2plot';
 import { getLineChartInfo } from 'Utils/api';
+import { tuple } from 'antd/lib/_util/type';
 import styles from './index.less';
 
 const { RangePicker } = DatePicker;
@@ -45,9 +46,18 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
               type: 'dataMarker',
               position: [item.date, item.value],
               top: true,
+              autoAdjust: true,
               text: {
+                maxLength: 100,
+                autoEllipsis: true,
                 content: item.news.content,
-                style: { textAlign: 'left' },
+                style: { textAlign: 'center', opacity: 1 },
+              },
+              line: {
+                length: 12,
+                style: {
+                  opacity: 1,
+                },
               },
               point: {
                 style: {
@@ -58,7 +68,7 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
             });
           }
         });
-        // console.log('annotations:', annotations);
+        console.log('annotations:', newAnnotations);
         setAnnotations(newAnnotations);
         return setData(content);
       })
@@ -91,6 +101,9 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     const line = new Line(styles['line-chart'], options);
     lineRef.current = line;
     line.render();
+    line.on('annotation:click', (event) => {
+      console.log(event);
+    });
   };
 
   useEffect(() => {
