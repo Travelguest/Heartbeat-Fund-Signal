@@ -45,8 +45,8 @@ const DisassemblyTree = (props) => {
     behaviors: ['drag-canvas', 'zoom-canvas', 'drag-node'], // ,
     nodeCfg: {
       anchorPoints: [
-        [0, 0.2],
-        [1, 0.2],
+        [0, 0.18],
+        [1, 0.18],
       ],
       title: {
         containerStyle: {
@@ -58,12 +58,21 @@ const DisassemblyTree = (props) => {
       },
       items: {
         containerStyle: {
-          fill: '#fff',
+          // fill: 'red',
+          opacity: 0,
         },
       },
-      style: { width: 90, height: 10, stroke: 'transparent' },
+      style: {
+        width: 60,
+        height: 0,
+        stroke: 'transparent',
+        opacity: 0,
+      },
       nodeStateStyles: false,
     },
+
+    level: 1,
+    autoFit: true,
     edgeCfg: {
       endArrow: {
         show: false,
@@ -84,6 +93,17 @@ const DisassemblyTree = (props) => {
         };
       },
       edgeStateStyles: false,
+    },
+    layout: {
+      direction: 'LR',
+      getWidth: (size) => {
+        // 用于计算布局的节点宽度，建议设置为 size[0]
+        return 10;
+      },
+      getHGap: () => {
+        // 每个节点的水平间隙，会结合 getWidth 返回值使用
+        return 40;
+      },
     },
   };
   return (
