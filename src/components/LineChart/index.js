@@ -68,6 +68,12 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
         formatter: (v) => `${Number(v).toFixed(2)}`,
       },
     },
+    meta: {
+      value: {
+        max: 1.5,
+        min: 0.8,
+      },
+    },
     legend: {
       position: 'top',
     },
