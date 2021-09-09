@@ -16,12 +16,7 @@ const DetailPosition = (props) => {
     <div className={styles['list-container']}>
       <div className={styles.header}>
         <span style={{ marginRight: 260 }}>详细持仓</span>
-        <span
-          style={{
-            color: '#0266b8',
-          }}
-          onClick={() => setDetail(!isDetail)}
-        >
+        <span className={styles['header-right']} onClick={() => setDetail(!isDetail)}>
           查看最新持仓
         </span>
       </div>

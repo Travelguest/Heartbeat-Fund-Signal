@@ -32,44 +32,24 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
     setParamsTime(dateString);
     setTime(date);
   };
-  // 可以用数组来生成多个点
-  const [annotations, setAnnotations] = useState([]);
+
+  const divStyles = {
+    position: 'absolute',
+    background: 'rgba(255,255,255,0.95)',
+    boxShadow: 'rgb(174, 174, 174) 0px 0px 10px',
+    borderRadius: '4px',
+    padding: '20px',
+  };
+
+  const setStyles = (container, styles) => {
+    for (const key in styles) {
+      container.style[key] = styles[key];
+    }
+  };
+
   useEffect(() => {
     getLineChartInfo(paramsTime)
       .then(({ content }) => {
-        // console.log('LineChart:', content);
-        // 处理数据中的新闻
-        const newAnnotations = annotations.slice();
-        content.forEach((item) => {
-          if (item.news) {
-            newAnnotations.push({
-              type: 'dataMarker',
-              position: [item.date, item.value],
-              top: true,
-              autoAdjust: true,
-              text: {
-                maxLength: 100,
-                autoEllipsis: true,
-                content: item.news.content,
-                style: { textAlign: 'center', opacity: 1 },
-              },
-              line: {
-                length: 12,
-                style: {
-                  opacity: 1,
-                },
-              },
-              point: {
-                style: {
-                  fill: '#f5222d',
-                  stroke: '#f5222d',
-                },
-              },
-            });
-          }
-        });
-        console.log('annotations:', newAnnotations);
-        setAnnotations(newAnnotations);
         return setData(content);
       })
       .catch((error) => {
@@ -95,15 +75,44 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
       start: 0.1,
       end: 0.9,
     },
-    annotations,
+    tooltip: {
+      customContent: (value, items) => {
+        const container = document.createElement('div');
+        setStyles(container, divStyles);
+        const frag = document.createDocumentFragment();
+        const title = document.createElement('div');
+        title.innerHTML = `${value}`;
+        frag.appendChild(title);
+        items.forEach((d) => {
+          const li = document.createElement('li');
+          li.innerHTML = `${d?.name}:${d?.value}`;
+          li.style.color = `${d?.color}`;
+          frag.appendChild(li);
+        });
+        const news = document.createElement('li');
+        news.innerHTML = `今日头条：${items[0]?.data?.news?.content ?? '无'}`;
+        frag.appendChild(news);
+        const content = `
+          <div>
+            <div>${value}</div>
+            <div>
+              ${items[0]?.name}:${items[0]?.value}
+            </div>
+            <div>
+              ${items[1]?.name}:${items[1]?.value}
+            </div>
+            <div>今日头条：${items[0]?.data?.news?.content ?? '无'}</div>
+          </div>
+        `;
+        container.appendChild(frag);
+        return container;
+      },
+    },
   };
   const render = () => {
     const line = new Line(styles['line-chart'], options);
     lineRef.current = line;
     line.render();
-    line.on('annotation:click', (event) => {
-      console.log(event);
-    });
   };
 
   useEffect(() => {
@@ -111,9 +120,8 @@ const LineChart = () /* or ( props : ILineChartProps ) */ => {
   }, []);
 
   useEffect(() => {
-    lineRef.current.update({ ...options, annotations });
     lineRef.current.changeData(data);
-  }, [data, annotations]);
+  }, [data]);
   return (
     <div className={styles['line-chart-container']}>
       <div className={styles['time-selection-container']}>

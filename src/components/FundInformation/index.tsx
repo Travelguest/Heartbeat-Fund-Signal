@@ -46,7 +46,7 @@ const FundInformation: React.FC<IFundInformationProps> = (props: IFundInformatio
   useEffect(() => {
     getConstituentStocks([time, fundID])
       .then(({ content }) => {
-        console.log('详细调仓', content);
+        // console.log('详细调仓', content);
         setDetailRepositioning(content);
         return content;
       })

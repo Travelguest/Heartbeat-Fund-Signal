@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
 import { Pie } from '@ant-design/charts';
-import './index.less';
+import styles from './index.less';
 
 const RingChart = (props) => {
   const toPercent = (point) => {
@@ -28,7 +28,7 @@ const RingChart = (props) => {
       type: 'inner',
       offset: '-50%',
       content: (obj) => {
-        return obj.percent > 0.1 ? obj.value : '';
+        return obj.percent > 0.05 ? obj.value : '';
       },
       style: {
         textAlign: 'center',
@@ -65,8 +65,8 @@ const RingChart = (props) => {
   };
 
   return (
-    <div className='ring-chart-container'>
-      <div className='title'>股票配置</div>
+    <div className={styles['ring-chart-container']}>
+      <div className={styles.title}>股票配置</div>
       <Pie {...config} />
     </div>
   );

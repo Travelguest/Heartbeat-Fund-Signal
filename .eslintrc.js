@@ -65,5 +65,7 @@ module.exports = {
     'react/prop-types': OFF,
     'no-param-reassign': OFF,
     'react-hooks/exhaustive-deps': WARN,
+    'no-restricted-syntax': WARN,
+    'guard-for-in': WARN,
   },
 };

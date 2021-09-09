@@ -79,6 +79,7 @@ const DisassemblyTree = (props) => {
         return {
           stroke: '#8dd3c7',
           lineWidth: 2,
+          lineLength: 1,
           strokeOpacity: 0.5,
         };
       },
